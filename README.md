@@ -10,7 +10,7 @@ To install the stable version of **plsdepot** from CRAN, run in your R console:
 install.packages("plsdepot")
 ```
 
-To install the development version of **plsdepot** from github (using the package "devtools""), simply run in your R console:
+To install the development version of **plsdepot** from github (using the package "devtools"), simply run in your R console:
 ```r
 # install.packages("devtools") 
 library(devtools)
