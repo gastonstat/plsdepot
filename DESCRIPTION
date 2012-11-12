@@ -1,0 +1,45 @@
+Package: plsdepot
+Type: Package
+Title: Partial Least Squares (PLS) Data Analysis Methods
+Version: 0.1.17
+Date: 2012-11-12
+Authors@R: person("Gaston", "Sanchez", role=c("aut", "cre"),
+    email = "gaston.stat@gmail.com")
+Author: Gaston Sanchez
+Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
+Description: plsdepot contains different methods for PLS analysis of one or two
+    data tables such as Tucker's Inter-Battery, NIPALS, SIMPLS, SIMPLS-CA, PLS
+    Regression, and PLS Canonical Analysis. The main reference for this
+    software is the awesome book (in French) 'La Regression PLS: Theorie et
+    Pratique' by Michel Tenenhaus.
+URL: http://www.gastonsanchez.com/plsdepot,
+     http://www.plsmodeling.com
+Depends:
+    R (>= 2.15.1)
+Suggests:
+    FactoMineR,
+    plspm
+License: GPL-3
+LazyLoad: yes
+Collate:
+    'nipals.R'
+    'plot.nipals.R'
+    'plot.plsca.R'
+    'plot.plsreg1.R'
+    'plot.plsreg2.R'
+    'plsca.R'
+    'plsreg1.R'
+    'plsreg2.R'
+    'print.nipals.R'
+    'print.plsca.R'
+    'print.plsreg1.R'
+    'print.plsreg2.R'
+    'interbat.R'
+    'plot.interbat.R'
+    'print.interbat.R'
+    'print.simpls.R'
+    'print.simplsca.R'
+    'simpls.R'
+    'simplsca.R'
+    'plot.simpls.R'
+    'plot.simplsca.R'

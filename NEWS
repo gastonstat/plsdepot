@@ -1,0 +1,30 @@
+Version 0.1.17 (2012-11-12)
+------------------------------------------------------------
+
+* `simplsca` now provides all R2 coefficients for T and U components
+
+Version 0.1.16 (2012-11-05)
+------------------------------------------------------------
+
+NEW FEATURES AND FUNCTIONS
+
+* PLSTROIKA has started (restructuring my pls packages)
+
+* Launching the R package plsdepot 
+
+* plsdepot is born as a split from the R package "plspm" in an effort to make the maintainance of my PLS methods much easier. 
+
+* New implemented methods: `interbat` Tucker's Inter-Battery, `simpls` SIMPLS, `simplsca` SIMPLS Canonical Analysis
+
+* Simpler but prettier graphics have been implemented
+
+* Rounding of results to four decimals has been eliminated
+
+* documentation has been improved using new features of 'roxygen2'
+
+* more data sets from Michel Tenenhaus' awesome book 'La Regression PLS' have been added
+
+BUG FIXES
+
+* Pain-in-the-butt warning message about 'sd() deprecated' has been tackled
+
