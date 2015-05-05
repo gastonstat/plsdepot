@@ -1,40 +1,40 @@
-#'@title NIPALS: Non-linear Iterative Partial Least Squares
-#'
-#'@description
-#'Principal Components Analysis with NIPALS algorithm
-#'
-#'@details
-#'The function \code{nipals} performs Principal Components Analysis of a data
-#'matrix that may contain missing values.
-#'
-#'@param Data A numeric matrix or data frame (which may contain
-#'missing values).
-#'@param comps Number of components to be calculated (by default 2)
-#'@param scaled A logical value indicating whether to scale the data
-#'(\code{TRUE} by default).
-#'@return An object of class \code{"nipals"}, basically a list with the
-#'following elements:
-#'
-#'When the analyzed data contain missing values, the help interpretation tools
-#'(e.g. \code{cor.xt, disto, contrib, cos, dmod}) may not be meaningful, that
-#'is to say, some of the results may not be coherent.
-#'@return \item{values}{The pseudo eigenvalues}
-#'@return \item{scores}{The extracted scores (i.e. components)}
-#'@return \item{loadings}{The loadings}
-#'@return \item{cor.xt}{Correlations between the variables and the scores}
-#'@return \item{disto}{Squared distance of the observations to the origin}
-#'@return \item{contrib}{Contributions of the observations (rows)}
-#'@return \item{cos}{Squared cosinus}
-#'@return \item{dmod}{Distance to the Model}
-#'@author Gaston Sanchez
-#'@seealso \code{\link{plot.nipals}}, \code{\link{plsreg1}}
-#'@references Tenenhaus, M. (1998) \emph{La Regression PLS. Theorie et
-#'Pratique.} Paris: Editions TECHNIP.
-#'
-#'Tenenhaus, M. (2007) \emph{Statistique. Methodes pour decrire, expliquer et
-#'prevoir}. Paris: Dunod.
-#'@export
-#'@examples
+#' @title NIPALS: Non-linear Iterative Partial Least Squares
+#' 
+#' @description
+#' Principal Components Analysis with NIPALS algorithm
+#' 
+#' @details
+#' The function \code{nipals} performs Principal Components Analysis of a data
+#' matrix that may contain missing values.
+#' 
+#' @param Data A numeric matrix or data frame (which may contain
+#' missing values).
+#' @param comps Number of components to be calculated (by default 2)
+#' @param scaled A logical value indicating whether to scale the data
+#' (\code{TRUE} by default).
+#' @return An object of class \code{"nipals"}, basically a list with the
+#' following elements:
+#' 
+#' When the analyzed data contain missing values, the help interpretation tools
+#' (e.g. \code{cor.xt, disto, contrib, cos, dmod}) may not be meaningful, that
+#' is to say, some of the results may not be coherent.
+#' @return \item{values}{The pseudo eigenvalues}
+#' @return \item{scores}{The extracted scores (i.e. components)}
+#' @return \item{loadings}{The loadings}
+#' @return \item{cor.xt}{Correlations between the variables and the scores}
+#' @return \item{disto}{Squared distance of the observations to the origin}
+#' @return \item{contrib}{Contributions of the observations (rows)}
+#' @return \item{cos}{Squared cosinus}
+#' @return \item{dmod}{Distance to the Model}
+#' @author Gaston Sanchez
+#' @seealso \code{\link{plot.nipals}}, \code{\link{plsreg1}}
+#' @references Tenenhaus, M. (1998) \emph{La Regression PLS. Theorie et
+#' Pratique.} Paris: Editions TECHNIP.
+#' 
+#' Tenenhaus, M. (2007) \emph{Statistique. Methodes pour decrire, expliquer et
+#' prevoir}. Paris: Dunod.
+#' @export
+#' @examples
 #'
 #'  \dontrun{
 #'  # load datasets carscomplete and carsmissing
@@ -71,7 +71,7 @@ function(Data, comps = 2, scaled = TRUE)
   n = nrow(X)
   p = ncol(X)
   if (!n || !p) stop("dimension 0 in Data")
-  if (p==1) stop("\nData must be a numeric matrix or data frame")
+  if (p == 1) stop("\nData must be a numeric matrix or data frame")
   if (is.null(colnames(X)))
     colnames(X) = paste(rep("X",p), 1:p, sep="")
   if (is.null(rownames(X)))
@@ -79,10 +79,10 @@ function(Data, comps = 2, scaled = TRUE)
   if (!is.logical(scaled)) scaled = TRUE
   if (scaled) X <- scale(X) else X <- scale(X, scale=FALSE)    
   nc = comps
-  if (mode(nc)!="numeric" || length(nc)!=1 || 
-    nc<=1 || (nc%%1)!=0 || nc>min(n,p))
+  if (mode(nc) != "numeric" || length(nc) != 1 || 
+    nc <= 1 || (nc%%1) != 0 || nc > min(n, p))
     nc <- 2
-  if (nc==n) nc = n - 1
+  if (nc == n) nc = n - 1
   if (any(is.na(X))) na.miss = TRUE else na.miss = FALSE
   
   # =======================================================

@@ -106,6 +106,9 @@ function(predictors, responses, comps = 2, crosval = TRUE)
       nc <= 1 || (nc%%1) != 0 || nc > min(n,p))
       nc = min(n, p)   
     if (nc == n) nc = n - 1    
+  }
+  if (!is.logical(crosval)) { 
+    crosval = FALSE
   } else {
     if (n >= 10) {
       crosval = TRUE
@@ -116,7 +119,6 @@ function(predictors, responses, comps = 2, crosval = TRUE)
       message("\nSorry, no cross-validation with less than 10 observations")
     }
   }
-  if (!is.logical(crosval)) crosval = FALSE
   
   # =======================================================
   # prepare ingredients
