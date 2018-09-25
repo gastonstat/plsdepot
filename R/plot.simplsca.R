@@ -48,7 +48,7 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{simplsca}}
 #'@method plot simplsca
-#'@S3method plot simplsca
+#'@export
 #'@examples
 #'
 #'  \dontrun{

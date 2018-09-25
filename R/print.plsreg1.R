@@ -1,4 +1,4 @@
-#' @S3method print plsreg1
+#'@export
 print.plsreg1 <- function(x, ...) {
     cat("\nPLS Regression 1\n")
     cat(rep("-", 44), sep = "")

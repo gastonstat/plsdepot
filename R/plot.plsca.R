@@ -48,7 +48,7 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{plsca}}
 #'@method plot plsca
-#'@S3method plot plsca
+#'@export
 #'@examples
 #'
 #'  \dontrun{

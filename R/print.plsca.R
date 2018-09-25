@@ -1,4 +1,4 @@
-#' @S3method print plsca
+#'@export
 print.plsca <- function(x, ...) {
     cat("\nPLS Canonical Analysis\n")
     cat(rep("-", 51), sep = "")

@@ -1,4 +1,4 @@
-#' @S3method print simplsca
+#'@export
 print.simplsca <- function(x, ...) {
     cat("\nSIMPLS Canonical Analysis\n")
     cat(rep("-", 41), sep = "")

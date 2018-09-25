@@ -1,3 +1,8 @@
+Version 0.1.19 (2018-09-25)  
+------------------------------------------------------------
+* predict.plsreg1 was added.  
+* Variable Influence on Projection (VIP) was added.
+
 Version 0.1.18 (2015-05-05)
 ------------------------------------------------------------
 
@@ -32,4 +37,3 @@ NEW FEATURES AND FUNCTIONS
 BUG FIXES
 
 * Pain-in-the-butt warning message about 'sd() deprecated' has been tackled
-

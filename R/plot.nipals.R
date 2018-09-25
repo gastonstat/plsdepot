@@ -38,7 +38,7 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{nipals}}
 #'@method plot nipals
-#'@S3method plot nipals
+#'@export
 #'@examples
 #'
 #'  \dontrun{

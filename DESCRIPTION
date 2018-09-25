@@ -1,10 +1,11 @@
 Package: plsdepot
 Type: Package
 Title: Partial Least Squares (PLS) Data Analysis Methods
-Version: 0.1.18
-Date: 2015-05-05
-Authors@R: person("Gaston", "Sanchez", email = "gaston.stat@gmail.com",
-    role = c("aut", "cre"))
+Version: 0.1.19
+Date: 2018-09-25
+Authors@R: c(
+    person("Gaston", "Sanchez", email = "gaston.stat@gmail.com", role = c("aut", "cre")),
+    person("Dongdong", "Kong", email = "kongdd.sysu@gmail.com", role = c("aut")))
 Author: Gaston Sanchez
 Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
 Description: plsdepot contains different methods for PLS analysis of one or two
@@ -17,31 +18,11 @@ Depends:
     R (>= 3.0.1)
 Imports:
     tester,
-    matrixkit
+    matrixkit,
+    magrittr
 Suggests:
     FactoMineR,
     plspm
 License: GPL-3
 LazyLoad: yes
-Collate:
-    'nipals.R'
-    'plot.nipals.R'
-    'plot.plsca.R'
-    'plot.plsreg1.R'
-    'plot.plsreg2.R'
-    'plsca.R'
-    'plsreg1.R'
-    'plsreg2.R'
-    'print.nipals.R'
-    'print.plsca.R'
-    'print.plsreg1.R'
-    'print.plsreg2.R'
-    'interbat.R'
-    'plot.interbat.R'
-    'print.interbat.R'
-    'print.simpls.R'
-    'print.simplsca.R'
-    'simpls.R'
-    'simplsca.R'
-    'plot.simpls.R'
-    'plot.simplsca.R'
+RoxygenNote: 6.1.0

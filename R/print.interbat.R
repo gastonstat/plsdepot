@@ -1,4 +1,4 @@
-#' @S3method print interbat
+#'@export
 print.interbat <- function(x, ...) {
     cat("\nTucker's Inter-Battery Method\n")
     cat(rep("-", 41), sep = "")

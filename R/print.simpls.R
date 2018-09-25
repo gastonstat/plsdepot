@@ -1,4 +1,4 @@
-#' @S3method print simpls
+#'@export
 print.simpls <- function(x, ...) {
     cat("\nSIMPLS\n")
     cat(rep("-", 41), sep = "")

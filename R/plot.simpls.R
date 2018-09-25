@@ -43,7 +43,7 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{simpls}}
 #'@method plot simpls
-#'@S3method plot simpls
+#'@export
 #'@examples
 #'
 #'  \dontrun{

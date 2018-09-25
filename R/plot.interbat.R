@@ -48,7 +48,6 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{interbat}}
 #'@method plot interbat
-#'@S3method plot interbat
 #'@export
 #'@examples
 #'

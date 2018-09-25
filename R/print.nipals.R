@@ -1,4 +1,4 @@
-#' @S3method print nipals
+#'@export
 print.nipals <- function(x, ...) {
     cat("\nNIPALS algorithm\n")
     cat(rep("-", 34), sep = "")

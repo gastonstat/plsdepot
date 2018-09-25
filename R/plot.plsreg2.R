@@ -48,7 +48,7 @@
 #'@author Gaston Sanchez
 #'@seealso \code{\link{plsreg2}}
 #'@method plot plsreg2
-#'@S3method plot plsreg2
+#'@export
 #'@examples
 #'
 #'  \dontrun{

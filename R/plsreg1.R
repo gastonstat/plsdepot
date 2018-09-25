@@ -25,6 +25,7 @@
 #'data or if there are less than 10 observations.
 #'@return An object of class \code{'plsreg1'}, basically a list with the
 #'following elements:
+#'@return \item{INPUT}{Standardized X and Y}
 #'@return \item{x.scores}{PLS components (also known as T-components)}
 #'@return \item{x.loads}{loadings of the predictor variables}
 #'@return \item{y.scores}{scores of the response variable (also known as U-components)}
@@ -56,6 +57,7 @@
 #'
 #'Tenenhaus, M., Gauchi, J.-P., and Menardo, C. (1995) Regression PLS et
 #'applications. \emph{Revue de statistique appliquee}, \bold{43}, pp. 7-63.
+#'@importFrom stats complete.cases cor pchisq qf sd var
 #'@export
 #'@examples
 #'
@@ -256,31 +258,20 @@ plsreg1 <- function(predictors, response, comps = 2, crosval = TRUE) {
     # std beta coeffs
     Bs = as.vector(Ws %*% ch)
     if (!na.miss) {
-        # beta coeffs
-        Br = Bs * (rep(apply(Y, 2, sd), p)/apply(X, 2, sd))
-        # intercept
-        cte = as.vector(colMeans(Y) - Br %*% apply(X, 2, mean))
-        # y predicted
-        y.hat = as.vector(X %*% Br + cte)
-        # correlations
-        cor.xyt = cor(cbind(Xx, y = Yy), Th)
+        Br = Bs * (rep(apply(Y, 2, sd), p)/apply(X, 2, sd))     # beta coeffs
+        cte = as.vector(colMeans(Y) - Br %*% apply(X, 2, mean)) # intercept
+        y.hat = as.vector(X %*% Br + cte)                       # y predicted    
     } else {
         mu.x <- attributes(Xx)$"scaled:center"
         sd.x <- attributes(Xx)$"scaled:scale"
-        X.hat = Th %*% t(Ph) %*% diag(sd.x, p, p) + matrix(rep(mu.x, each = n), n, 
-            p)
-        # beta coeffs (unstandardized)
-        Br = Bs * (rep(apply(Y, 2, sd), p)/sd.x)
-        # intercept
-        cte = as.vector(colMeans(response) - Br %*% mu.x)
+        X.hat = Th %*% t(Ph) %*% diag(sd.x, p, p) + matrix(rep(mu.x, each = n), n, p)
+        
+        Br = Bs * (rep(apply(Y, 2, sd), p)/sd.x)          # beta coeffs (unstandardized)
+        cte = as.vector(colMeans(response) - Br %*% mu.x) # intercept
         y.hat = as.vector(X.hat %*% Br + cte)
-        cor.xyt = matrix(NA, p + 1, h)
-        for (j in 1:p) {
-            i.exist <- which(complete.cases(X[, j]))
-            cor.xyt[j, ] = cor(Xx[i.exist, j], Th[i.exist, ])
-        }
-        cor.xyt[p + 1, ] = cor(Yy, Th)
     }
+    cor.xyt <- cor(cbind(Xx, y = Yy), Th, use = "pairwise.complete.obs") # correlations
+
     resid = as.vector(Y - y.hat)  # residuals
     R2 = as.vector(cor(Th, Yy))^2  # R2 coefficients
     # explained variance
@@ -288,28 +279,41 @@ plsreg1 <- function(predictors, response, comps = 2, crosval = TRUE) {
     # Hotelling T2
     T2hot = rbind(hlim[1:h], t(apply(Hot[, 1:h], 1, cumsum)))
     # add names
-    dimnames(Wh) = list(colnames(X), paste(rep("w", h), 1:h, sep = ""))
-    dimnames(Ws) = list(colnames(X), paste(rep("w*", h), 1:h, sep = ""))
-    dimnames(Th) = list(rownames(X), paste(rep("t", h), 1:h, sep = ""))
-    dimnames(Ph) = list(colnames(X), paste(rep("p", h), 1:h, sep = ""))
-    dimnames(Uh) = list(rownames(Y), paste(rep("u", h), 1:h, sep = ""))
-    names(ch) = paste(rep("c", h), 1:h, sep = "")
-    dimnames(T2hot) = list(c("T2", rownames(X)), paste(rep("H", h), 1:h, sep = ""))
-    names(Bs) = colnames(X)
-    names(Br) = colnames(X)
-    names(resid) = rownames(Y)
-    names(y.hat) = rownames(Y)
-    names(R2) = paste(rep("t", h), 1:h, sep = "")
-    colnames(R2Xy) = paste(rep("t", h), 1:h, sep = "")
+    dimnames(Wh)      = list(colnames(X), paste(rep("w", h), 1:h, sep = ""))
+    dimnames(Ws)      = list(colnames(X), paste(rep("w*", h), 1:h, sep = ""))
+    dimnames(Th)      = list(rownames(X), paste(rep("t", h), 1:h, sep = ""))
+    dimnames(Ph)      = list(colnames(X), paste(rep("p", h), 1:h, sep = ""))
+    dimnames(Uh)      = list(rownames(Y), paste(rep("u", h), 1:h, sep = ""))
+    names(ch)         = paste(rep("c", h), 1:h, sep = "")
+    dimnames(T2hot)   = list(c("T2", rownames(X)), paste(rep("H", h), 1:h, sep = ""))
+    names(Bs)         = colnames(X)
+    names(Br)         = colnames(X)
+    names(resid)      = rownames(Y)
+    names(y.hat)      = rownames(Y)
+    names(R2)         = paste(rep("t", h), 1:h, sep = "")
+    colnames(R2Xy)    = paste(rep("t", h), 1:h, sep = "")
     dimnames(cor.xyt) = list(c(colnames(X), colnames(Y)), colnames(Th))
     
     # results
-    res = list(x.scores = Th, x.loads = Ph, y.scores = Uh, y.loads = ch, cor.xyt = cor.xyt, 
-        raw.wgs = Wh, mod.wgs = Ws, std.coefs = Bs, reg.coefs = c(Intercept = cte, 
-            Br), R2 = R2, R2Xy = R2Xy, y.pred = y.hat, resid = resid, T2 = T2hot, 
-        Q2 = Q2cv, y = response)
+    res = list(
+        INPUT     = list(Xx=Xx, Yy=Yy),
+        x.scores  = Th, 
+        x.loads   = Ph, 
+        y.scores  = Uh, 
+        y.loads   = ch, 
+        cor.xyt   = cor.xyt, 
+        raw.wgs   = Wh, 
+        mod.wgs   = Ws, 
+        std.coefs = Bs, 
+        reg.coefs = c(Intercept = cte, Br), 
+        R2        = R2, 
+        R2Xy      = R2Xy, 
+        y.pred    = y.hat, 
+        resid     = resid, 
+        T2        = T2hot, 
+        Q2        = Q2cv, 
+        y         = response
+    )
     class(res) = "plsreg1"
     return(res)
 }
-
-
