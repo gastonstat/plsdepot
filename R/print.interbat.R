@@ -1,9 +1,7 @@
 #' @S3method print interbat
-print.interbat <-
-  function(x,...)
-  {       
+print.interbat <- function(x, ...) {
     cat("\nTucker's Inter-Battery Method\n")
-    cat(rep("-",41), sep="")
+    cat(rep("-", 41), sep = "")
     cat("\n$values     ", "eigenvalues")
     cat("\n$x.scores   ", "X-scores (T-components)")
     cat("\n$x.wgs      ", "X-weights")
@@ -19,7 +17,7 @@ print.interbat <-
     cat("\n$com.xu     ", "communality of X with U")
     cat("\n$com.yt     ", "communality of Y with T")
     cat("\n$statistic  ", "statistic Phi\n")
-    cat(rep("-",41), sep="")
+    cat(rep("-", 41), sep = "")
     cat("\n\n")
     invisible(x)
-  }
+}

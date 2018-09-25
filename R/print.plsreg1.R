@@ -1,9 +1,7 @@
 #' @S3method print plsreg1
-print.plsreg1 <-
-  function(x, ...)
-  {
+print.plsreg1 <- function(x, ...) {
     cat("\nPLS Regression 1\n")
-    cat(rep("-",44), sep="")
+    cat(rep("-", 44), sep = "")
     cat("\n$x.scores    ", "X-scores (T-components)")
     cat("\n$x.loads     ", "X-loadings")
     cat("\n$y.scores    ", "Y-scores (U-components)")
@@ -19,7 +17,7 @@ print.plsreg1 <-
     cat("\n$resid       ", "residuals")
     cat("\n$T2          ", "T2 hotelling")
     cat("\n$Q2          ", "Q2 cross validation\n")
-    cat(rep("-",44), sep="")
+    cat(rep("-", 44), sep = "")
     cat("\n\n")
     invisible(x)
-  }
+}

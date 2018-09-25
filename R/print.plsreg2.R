@@ -1,9 +1,7 @@
 #' @S3method print plsreg2
-print.plsreg2 <-
-  function(x, ...)
-  {
+print.plsreg2 <- function(x, ...) {
     cat("\nPLS Regression 2\n")
-    cat(rep("-",48), sep="")
+    cat(rep("-", 48), sep = "")
     cat("\n$x.scores    ", "X-scores (T-components)")
     cat("\n$x.loads     ", "X-loadings")
     cat("\n$y.scores    ", "Y-scores (U-components)")
@@ -23,7 +21,7 @@ print.plsreg2 <-
     cat("\n$VIP         ", "variable importance for projection")
     cat("\n$Q2          ", "Q2 index")
     cat("\n$Q2cum       ", "cummulated Q2\n")
-    cat(rep("-",48), sep="")
+    cat(rep("-", 48), sep = "")
     cat("\n\n")
     invisible(x)
-  }
+}
