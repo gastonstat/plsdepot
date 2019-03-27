@@ -18,11 +18,12 @@ Depends:
     R (>= 3.0.1)
 Imports:
     tester,
-    matrixkit,
     magrittr
 Suggests:
     FactoMineR,
     plspm
+Remotes:
+    #gastonstat/matrixkit
 License: GPL-3
 LazyLoad: yes
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1

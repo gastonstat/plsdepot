@@ -21,5 +21,5 @@
 #' @name plsdepot
 #' @docType package
 #' @import tester
-#' @import matrixkit
 NULL
+# @import matrixkit

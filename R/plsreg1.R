@@ -265,7 +265,7 @@ plsreg1 <- function(predictors, response, comps = 2, crosval = TRUE) {
         mu.x <- attributes(Xx)$"scaled:center"
         sd.x <- attributes(Xx)$"scaled:scale"
         X.hat = Th %*% t(Ph) %*% diag(sd.x, p, p) + matrix(rep(mu.x, each = n), n, p)
-        
+
         Br = Bs * (rep(apply(Y, 2, sd), p)/sd.x)          # beta coeffs (unstandardized)
         cte = as.vector(colMeans(response) - Br %*% mu.x) # intercept
         y.hat = as.vector(X.hat %*% Br + cte)
@@ -314,6 +314,7 @@ plsreg1 <- function(predictors, response, comps = 2, crosval = TRUE) {
         Q2        = Q2cv, 
         y         = response
     )
-    class(res) = "plsreg1"
+    res$VIP    <- VIP_plsreg(res) # Variable Influence on Projection
+    class(res) <- "plsreg1"
     return(res)
 }

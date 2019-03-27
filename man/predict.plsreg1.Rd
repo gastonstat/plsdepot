@@ -16,3 +16,22 @@
 \description{
 Predict method for Partial Least Squares Regression 1 (plsreg1)
 }
+\examples{
+\dontrun{
+## example of PLSR1 with the vehicles dataset
+# predictand variable: price of vehicles
+library(pls)
+data(vehicles)
+
+d <- data.frame(y = vehicles[,13, drop = FALSE])
+d$x = vehicles[,1:12] \%>\% as.matrix()
+
+m_pls <- plsr(price~x, data = d, scale = TRUE, validation = "CV")
+# phenofit::GOF(d$price, m_pls$fitted.values[,,2])
+
+# apply plsreg1 extracting 2 components (no cross-validation)
+pls1_one = plsreg1(vehicles[,1:12], vehicles[,13,drop=FALSE], comps=2, crosval=FALSE)
+ysim <- predict.plsreg1(pls1_one)
+# phenofit::GOF(d$price, ysim, include.r = T)
+}
+}

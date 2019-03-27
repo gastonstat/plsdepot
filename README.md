@@ -1,6 +1,16 @@
 # plsdepot
 
+Status: [![Travis Build
+Status](https://travis-ci.org/kongdd/plsdepot.svg?branch=master)](https://travis-ci.org/kongdd/plsdepot)
+
 The R package **plsdepot** provides a general framework for Partial Least Squares (PLS) Data Analysis Methods. **plsdepot** comes with a set of functions for PLS analysis of one or two data tables such as Tucker's Inter-Battery, NIPALS, SIMPLS, SIMPLS-CA, PLS Regression, as well as PLS Canonical Analysis.
+
+
+## Updates 
+**v0.1.19** (2018-09-25)  
+
+* predict.plsreg1 was added.  
+* Variable Influence on Projection (VIP) was added.
 
 
 ## Installation
@@ -13,8 +23,7 @@ install.packages("plsdepot")
 To install the development version of **plsdepot** from github (using the package "devtools"), simply run in your R console:
 ```r
 # install.packages("devtools") 
-library(devtools)
-install_github('plsdepot',  username='gastonstat')
+devtools::install_github('kongdd/plsdepot')
 ```
 More info at http://www.gastonsanchez.com/plsdepot
 
