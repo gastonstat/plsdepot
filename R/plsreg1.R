@@ -294,7 +294,13 @@ plsreg1 <- function(predictors, response, comps = 2, crosval = TRUE) {
     colnames(R2Xy)    = paste(rep("t", h), 1:h, sep = "")
     dimnames(cor.xyt) = list(c(colnames(X), colnames(Y)), colnames(Th))
     
-    # results
+    PRESS <- Q2cv[, 1]
+    if (!is.null(PRESS)) {
+        sd.y <- attributes(Yy)$"scaled:scale"
+        RMSE <- sqrt(PRESS/n)*sd.y
+        Q2cv <- cbind(RMSE, Q2cv)
+    }
+
     res = list(
         INPUT     = list(Xx=Xx, Yy=Yy),
         x.scores  = Th, 

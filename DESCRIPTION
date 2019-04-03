@@ -21,7 +21,8 @@ Imports:
     magrittr
 Suggests:
     FactoMineR,
-    plspm
+    plspm,
+    testthat
 Remotes:
     #gastonstat/matrixkit
 License: GPL-3
