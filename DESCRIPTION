@@ -23,8 +23,6 @@ Suggests:
     FactoMineR,
     plspm,
     testthat
-Remotes:
-    #gastonstat/matrixkit
 License: GPL-3
 LazyLoad: yes
 RoxygenNote: 6.1.1
