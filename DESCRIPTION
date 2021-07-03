@@ -45,3 +45,4 @@ Collate:
     'simplsca.R'
     'plot.simpls.R'
     'plot.simplsca.R'
+    'plsdepot.R'
