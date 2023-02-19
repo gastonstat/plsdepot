@@ -3,7 +3,7 @@ Type: Package
 Title: Partial Least Squares (PLS) Data Analysis Methods
 Version: 0.1.18
 Date: 2015-05-05
-Authors@R: person("Gaston", "Sanchez", email = "gaston.stat@gmail.com",
+Authors@R: person("Gaston", "Sanchez", email = "contact@gsanchez.33mail.com",
     role = c("aut", "cre"))
 Author: Gaston Sanchez
 Maintainer: Gaston Sanchez <gaston.stat@gmail.com>
